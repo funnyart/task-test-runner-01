@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, input, Input, EventTouch } from 'cc';
+import { _decorator, Component, Node, Button, input, Input, EventTouch } from 'cc';
 import type { Obstacle } from './Obstacle';
 import { Rope } from './Rope';
 import { PlayerController } from './PlayerController';
@@ -8,6 +8,7 @@ import { FloatingTextSpawner } from './FloatingTextSpawner';
 import { AudioManager } from './AudioManager';
 import { GameState } from './GameState';
 import { TimeFrozen } from './TimeFrozen';
+import { SuperHtmlPlayable } from './super_html_playable';
 
 const { ccclass, property } = _decorator;
 
@@ -45,11 +46,32 @@ export class GameManager extends Component {
     @property({ tooltip: 'задержка перед сменой первого экрана проигрыша на второй (s)' })
     gameOverFirstDelay = 1;
 
+    @property({ tooltip: 'Google Play ссылка (для super_html_playable)' })
+    googlePlayUrl: string = 'https://play.google.com/store/apps/details?id=ae.goragaming.playoff.blocks.game.make.earn.money.rewarded';
+
+    @property({ tooltip: 'App Store ссылка (опционально)' })
+    appStoreUrl: string = '';
+
+    @property({ tooltip: 'Unity-режим: переход в стор только через CTA-кнопки, не по клику по экрану' })
+    enableUnity = false;
+
+    @property({ tooltip: 'One-Click: автоматический переход в стор после открытия финального экрана' })
+    enableOneClick = false;
+
+    @property({ type: [Node], tooltip: 'CTA-кнопки (клик = download через super-html)' })
+    ctaButtons: Node[] = [];
+
+    @property({ type: Button, tooltip: 'кнопка Unity-режима (разрез, если enableUnity)' })
+    unityButton: Button = null;
+
     private _player: PlayerController = null;
     private _state: GameState = GameState.Menu;
     private _lives = 3;
     private _coins = 0;
     private _deathLocked = false;
+    private _sentGameEnd = false;
+    private _endReady = false;
+    private _ctaFired = false;
 
     public get state(): GameState { return this._state; }
     public get player(): PlayerController { return this._player; }
@@ -70,6 +92,9 @@ export class GameManager extends Component {
             this._player = this.playerNode.getComponent(PlayerController);
             if (this._player) this._player.setGame(this);
         }
+        if (this.googlePlayUrl) SuperHtmlPlayable.set_google_play_url(this.googlePlayUrl);
+        if (this.appStoreUrl) SuperHtmlPlayable.set_app_store_url(this.appStoreUrl);
+        this._bindCtaButtons();
         input.on(Input.EventType.TOUCH_START, this._onTouchStart, this);
     }
 
@@ -108,8 +133,41 @@ export class GameManager extends Component {
                 if (this.ui) this.ui.showJumpPrompt(false);
                 this._tryJump();
                 break;
+            case GameState.Victory:
+            case GameState.GameOver:
+                if (this._endReady && !this.enableUnity) this._openCta();
+                break;
             default:
                 break;
+        }
+    }
+
+    private _bindCtaButtons() {
+        for (const n of this.ctaButtons) {
+            if (!n) continue;
+            const btn = n.getComponent(Button);
+            if (btn) btn.node.on(Button.EventType.CLICK, this._openCta, this);
+            else n.on(Node.EventType.TOUCH_END, this._openCta, this);
+        }
+        if (this.unityButton) {
+            this.unityButton.node.on(Button.EventType.CLICK, this._openCta, this);
+        }
+    }
+
+    private _gameEnd() {
+        if (this._sentGameEnd) return;
+        this._sentGameEnd = true;
+        SuperHtmlPlayable.game_end();
+    }
+
+    private _openCta() {
+        SuperHtmlPlayable.download();
+    }
+
+    private _maybeOneClick() {
+        if (this.enableOneClick && !this._ctaFired && (this.googlePlayUrl || this.appStoreUrl)) {
+            this._ctaFired = true;
+            this.scheduleOnce(() => this._openCta(), 0.5);
         }
     }
 
@@ -168,6 +226,9 @@ export class GameManager extends Component {
             this.ui.showVictory(true);
         }
         if (this.audio) this.audio.playWin();
+        this._gameEnd();
+        this._endReady = true;
+        this._maybeOneClick();
     }
 
     public gameOver() {
@@ -187,6 +248,9 @@ export class GameManager extends Component {
                     this.ui.showGameOverFirst(false);
                     this.ui.showGameOver(true);
                 }
+                this._gameEnd();
+                this._endReady = true;
+                this._maybeOneClick();
             }, this.gameOverFirstDelay);
         }, this.gameOverDelay);
     }

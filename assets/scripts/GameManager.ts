@@ -1,5 +1,6 @@
 import { _decorator, Component, Node, input, Input, EventTouch } from 'cc';
 import type { Obstacle } from './Obstacle';
+import { Rope } from './Rope';
 import { PlayerController } from './PlayerController';
 import { UIManager } from './UIManager';
 import { CameraFollow } from './CameraFollow';
@@ -31,6 +32,9 @@ export class GameManager extends Component {
 
     @property({ type: Node, tooltip: 'нода, которая отключается при открытии любого экрана победы/проигрыша' })
     disableOnEnd: Node = null;
+
+    @property({ type: [Rope], tooltip: 'половинки финишной ленты/веревки — разрезаются при победе' })
+    ropes: Rope[] = [];
 
     @property({ tooltip: 'сколько жизней (сердечек) у игрока' })
     maxLives = 3;
@@ -157,6 +161,7 @@ export class GameManager extends Component {
         if (this._state !== GameState.Running) return;
         this._state = GameState.Victory;
         this._disableEndUI();
+        for (const r of this.ropes) if (r) r.cut();
         if (this._player) this._player.stopAll();
         if (this.ui) {
             this.ui.showJumpPrompt(false);

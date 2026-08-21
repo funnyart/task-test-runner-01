@@ -29,6 +29,9 @@ export class GameManager extends Component {
     @property(AudioManager)
     audio: AudioManager = null;
 
+    @property({ type: Node, tooltip: 'нода, которая отключается при открытии любого экрана победы/проигрыша' })
+    disableOnEnd: Node = null;
+
     @property({ tooltip: 'сколько жизней (сердечек) у игрока' })
     maxLives = 3;
 
@@ -42,6 +45,7 @@ export class GameManager extends Component {
     private _state: GameState = GameState.Menu;
     private _lives = 3;
     private _coins = 0;
+    private _deathLocked = false;
 
     public get state(): GameState { return this._state; }
     public get player(): PlayerController { return this._player; }
@@ -145,9 +149,14 @@ export class GameManager extends Component {
         if (this.ui) this.ui.setCoins(this._coins);
     }
 
+    private _disableEndUI() {
+        if (this.disableOnEnd && this.disableOnEnd.isValid) this.disableOnEnd.active = false;
+    }
+
     public victory() {
         if (this._state !== GameState.Running) return;
         this._state = GameState.Victory;
+        this._disableEndUI();
         if (this._player) this._player.stopAll();
         if (this.ui) {
             this.ui.showJumpPrompt(false);
@@ -157,13 +166,15 @@ export class GameManager extends Component {
     }
 
     public gameOver() {
-        if (this._state === GameState.Victory || this._state === GameState.GameOver) return;
-        this._state = GameState.GameOver;
-        if (this._player) this._player.stopAll();
+        if (this._deathLocked) return;
+        this._deathLocked = true;
         if (this.ui) this.ui.showJumpPrompt(false);
         if (this.audio) this.audio.playLose();
         this.scheduleOnce(() => {
-            if (this._state !== GameState.GameOver) return;
+            if (this._state === GameState.Victory || this._state === GameState.GameOver) return;
+            this._state = GameState.GameOver;
+            this._disableEndUI();
+            if (this._player) this._player.stopAll();
             if (this.ui) this.ui.showGameOverFirst(true);
             this.scheduleOnce(() => {
                 if (this._state !== GameState.GameOver) return;

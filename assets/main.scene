@@ -434,7 +434,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -212.903,
-      "y": -268.376,
+      "y": -173.899,
       "z": 0
     },
     "_lrot": {
@@ -482,7 +482,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": -120.603,
       "z": 0
     },
     "_lrot": {
@@ -637,9 +637,9 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "runSpeed": 340,
-    "jumpVelocity": 900,
-    "gravity": 1400,
+    "runSpeed": 450,
+    "jumpVelocity": 2000,
+    "gravity": 5000,
     "invulnerableTime": 1,
     "blinkInterval": 0.08,
     "hitFlashColor": {
@@ -650,7 +650,7 @@
       "a": 255
     },
     "hitHalfWidth": 30,
-    "hitHalfHeight": 80,
+    "hitHalfHeight": 200,
     "_id": "e67z5sve9AQY9FpMFetff0"
   },
   {
@@ -783,10 +783,6 @@
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "7d38d621-60be-4dfd-b421-194244e4e84c@f9941",
-        "__expectedType__": "cc.SpriteFrame"
-      },
-      {
         "__uuid__": "a09f3c1d-8c58-4e25-9dab-bc644d6e7da1@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
@@ -799,7 +795,7 @@
         "__expectedType__": "cc.SpriteFrame"
       }
     ],
-    "fps": 9,
+    "fps": 12,
     "loop": true
   },
   {
@@ -19815,7 +19811,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": -2.377,
       "z": 0
     },
     "_lrot": {
@@ -19913,9 +19909,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "e3UKTPTz5Mo58j6bZMJn78"
   },
   {
@@ -19943,7 +19940,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 903.346,
-      "y": 0,
+      "y": -2.377,
       "z": 0
     },
     "_lrot": {
@@ -20041,9 +20038,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "52Kk9IUSdEb5YCDHh16UE8"
   },
   {
@@ -20169,9 +20167,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "150etkf8VIlKY4amVaIfKG"
   },
   {
@@ -20297,9 +20296,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "51fztLZ3dCXLJ1r23kj2sf"
   },
   {
@@ -20425,9 +20425,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "91Wz+XrKhC17jF4OkW99m0"
   },
   {
@@ -20553,9 +20554,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "4dIqD7yw5AVKlk75fN8O0f"
   },
   {
@@ -20681,9 +20683,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "b5l5Xz4qZNNKxkXkcyKZo8"
   },
   {
@@ -20809,9 +20812,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "8dsodNTU5Mi4Cr0+gg2S6S"
   },
   {
@@ -20937,9 +20941,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "5dtULvUJxMG5aDMOX1Tw5V"
   },
   {
@@ -21065,9 +21070,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "76U0SW+1ZOOJAUWwRgvP6q"
   },
   {
@@ -21193,9 +21199,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "747YLSJD9Po4pPd/UaRNZm"
   },
   {
@@ -21321,9 +21328,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "35iCrixwlHlIQNija60zt3"
   },
   {
@@ -21449,9 +21457,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "17rk0SIYFLNJ7CD+fMIY1m"
   },
   {
@@ -21577,9 +21586,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "cd5ky5rfNODrlwacX+zoO3"
   },
   {
@@ -21705,9 +21715,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "23VR2wJdZGRKNmLR5t+p32"
   },
   {
@@ -21833,9 +21844,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "4aGA4B+x1IxJ6k6kFeFmNG"
   },
   {
@@ -21961,9 +21973,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "86B4PwvvRPmp3qrCRpagMd"
   },
   {
@@ -22089,9 +22102,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "62XQ87fh5DZqt0MxWG3/S7"
   },
   {
@@ -22217,9 +22231,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "18/J7J47VGX5SLi7+1EFn5"
   },
   {
@@ -22345,9 +22360,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "77l3wwVaxIR6Q4ir+fzP4d"
   },
   {
@@ -22473,9 +22489,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "fcX4PytOpEgYtCc4S4GApc"
   },
   {
@@ -22601,9 +22618,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "40lW8r6jJCC6U6e0o5LcnU"
   },
   {
@@ -22729,9 +22747,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "6eHzVA9IBLy6OX8/o4IAhg"
   },
   {
@@ -22857,9 +22876,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "c2v+dYzr9HaLJGWMinJmK6"
   },
   {
@@ -22985,9 +23005,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "75uagNvRxABogfZ+kYgU4b"
   },
   {
@@ -23113,9 +23134,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "0e/OC8S35BIYSSQF7kaszR"
   },
   {
@@ -23241,9 +23263,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "c9ujCFuUJK548s5/oyyoEp"
   },
   {
@@ -23369,9 +23392,10 @@
     "_enabled": true,
     "__prefab": null,
     "value": 5,
-    "collectRadius": 150,
+    "collectRadius": 160,
     "bob": true,
     "flyDuration": 0.45,
+    "flyDelay": 0.2,
     "_id": "0bYoLJwjBBV5Gepz12QapL"
   },
   {
@@ -23428,7 +23452,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 2282.217,
-      "y": -268.376,
+      "y": -300.576,
       "z": 0
     },
     "_lrot": {
@@ -23886,7 +23910,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 179.03,
-      "y": -220.961,
+      "y": -234.043,
       "z": 0
     },
     "_lrot": {
@@ -27216,7 +27240,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 6199.41,
-      "y": -268.376,
+      "y": -283.576,
       "z": 0
     },
     "_lrot": {
@@ -27671,7 +27695,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 9509.783,
-      "y": -268.376,
+      "y": -283.576,
       "z": 0
     },
     "_lrot": {
@@ -28126,7 +28150,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 12626.527,
-      "y": -268.376,
+      "y": -283.576,
       "z": 0
     },
     "_lrot": {
@@ -28581,7 +28605,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 16279.965,
-      "y": -268.376,
+      "y": -283.576,
       "z": 0
     },
     "_lrot": {

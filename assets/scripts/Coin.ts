@@ -15,13 +15,17 @@ export class Coin extends Component {
     bob = true;
 
     @property({ tooltip: 'длительность полёта к счётчику (s)' })
-    flyDuration = 0.45;
+    flyDuration = 0.3;
+
+    @property({ tooltip: 'задержка перед полётом после сбора (s)' })
+    flyDelay = 0.3;
 
     private _collected = false;
     private _flying = false;
     private _bobTween = null;
     private _flyTime = 0;
     private _flyStart: Vec3 = null;
+    private _delayTimer = 0;
 
     onLoad() {
         if (this.bob) {
@@ -42,7 +46,15 @@ export class Coin extends Component {
     }
 
     update(dt: number) {
-        if (this._collected && !this._flying) return;
+        if (this._collected && !this._flying) {
+            this._delayTimer -= dt;
+            if (this._delayTimer <= 0) {
+                this._flyStart = this.node.worldPosition.clone();
+                this._flyTime = 0;
+                this._flying = true;
+            }
+            return;
+        }
 
         if (this._flying) {
             this._updateFlight(dt);
@@ -74,9 +86,8 @@ export class Coin extends Component {
             if (gm.audio) gm.audio.playCoin();
         }
 
-        this._flyStart = this.node.worldPosition.clone();
-        this._flyTime = 0;
-        this._flying = true;
+        this._delayTimer = this.flyDelay;
+        this._flying = false;
     }
 
     private _updateFlight(dt: number) {
